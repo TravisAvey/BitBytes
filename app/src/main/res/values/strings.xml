@@ -18,4 +18,11 @@
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="email_hint">Email</string>
     <string name="sign_up_button_label">Sign Up</string>
+    <string name="sign_up_error_title">Error</string>
+    <string name="sign_up_error">Please fill out the username, password, and email fields</string>
+    <string name="ok_button_dialog">OK</string>
+    <string name="error_general_title">Looks like there was an error!</string>
+    <string name="error_general_message">Something went wrong!</string>
+    <string name="success_title">Success!</string>
+    <string name="success_message">Welcome to Bit Bytes!</string>
 </resources>

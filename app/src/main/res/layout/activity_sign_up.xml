@@ -4,7 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.cypherbytes.bitbytes.SignUpActivity"
+    tools:context="com.cypherbytes.bitbytes.ui.SignUpActivity"
     android:background="@drawable/bg_login">
 
 
@@ -14,6 +14,7 @@
         android:id="@+id/usernameField"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
         android:hint="@string/usrname_hint"/>
 
     <EditText
@@ -24,6 +25,7 @@
         android:id="@+id/passwordField"
         android:layout_below="@+id/usernameField"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
         android:hint="@string/pswd_hint"/>
 
     <EditText
@@ -34,13 +36,14 @@
         android:id="@+id/emailField"
         android:layout_below="@+id/passwordField"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
         android:hint="@string/email_hint"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sign_up_button_label"
-        android:id="@+id/signupButton"
+        android:id="@+id/signUpButton"
         android:layout_below="@+id/emailField"
         android:layout_centerHorizontal="true"
         style="@style/buttons" />

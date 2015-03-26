@@ -1,19 +1,28 @@
-package com.cypherbytes.bitbytes;
+package com.cypherbytes.bitbytes.ui;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.cypherbytes.bitbytes.R;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
-public class SignUpActivity extends ActionBarActivity
+public class LoginActivity extends ActionBarActivity
 {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_login);
+        ButterKnife.inject(this);
+
     }
 
 
@@ -21,7 +30,7 @@ public class SignUpActivity extends ActionBarActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sign_up, menu);
+        getMenuInflater().inflate(R.menu.menu_login, menu);
         return true;
     }
 
@@ -40,5 +49,12 @@ public class SignUpActivity extends ActionBarActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick(R.id.signUpTextView)
+    public void startSignUpActivity(View view)
+    {
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
     }
 }
