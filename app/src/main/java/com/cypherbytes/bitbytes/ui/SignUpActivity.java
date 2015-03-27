@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.cypherbytes.bitbytes.DialogFragments.AlertDialogFragment;
 import com.cypherbytes.bitbytes.DialogFragments.SignupDialogFragment;
@@ -27,15 +29,18 @@ public class SignUpActivity extends ActionBarActivity
     @InjectView(R.id.usernameField) EditText mUsername;
     @InjectView(R.id.passwordField) EditText mPassword;
     @InjectView(R.id.emailField) EditText mEmail;
+    @InjectView(R.id.signUpProgressBar) ProgressBar mProgressBar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_sign_up);
         ButterKnife.inject(this);
 
+        mProgressBar.setVisibility(View.INVISIBLE);
 
     }
 
@@ -84,6 +89,7 @@ public class SignUpActivity extends ActionBarActivity
         else
         {
             //create new user
+            mProgressBar.setVisibility(View.VISIBLE);
             ParseUser user = new ParseUser();
             user.setUsername(username);
             user.setPassword(password);
@@ -93,12 +99,9 @@ public class SignUpActivity extends ActionBarActivity
                 @Override
                 public void done(ParseException e)
                 {
+                    mProgressBar.setVisibility(View.INVISIBLE);
                     if (e == null)
                     {
-                        // user successfully signed up
-                       // SuccessDialogFragment dialog = new SuccessDialogFragment();
-                       // dialog.show(getFragmentManager(), "error_dialog");
-
                         Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

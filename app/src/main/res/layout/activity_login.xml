@@ -50,4 +50,14 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         style="@style/fonts" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginProgressBar"
+        android:layout_above="@+id/signUpTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="31dp"
+        android:indeterminate="true"
+        android:focusableInTouchMode="false"/>
 </RelativeLayout>

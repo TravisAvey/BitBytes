@@ -6,15 +6,29 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.cypherbytes.bitbytes.DialogFragments.AlertDialogFragment;
+import com.cypherbytes.bitbytes.DialogFragments.SignupDialogFragment;
 import com.cypherbytes.bitbytes.R;
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 
 
 public class LoginActivity extends ActionBarActivity
 {
+
+    @InjectView(R.id.passwordField) TextView mPassword;
+    @InjectView(R.id.userIdField) TextView mUsername;
+    @InjectView(R.id.loginProgressBar) ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -22,8 +36,11 @@ public class LoginActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
+        mProgressBar.setVisibility(View.INVISIBLE);
 
     }
+
+
 
 
     @Override
@@ -56,5 +73,46 @@ public class LoginActivity extends ActionBarActivity
     {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
+    }
+
+    @OnClick(R.id.loginButton)
+    public void loginActivity(View view)
+    {
+        String username = mUsername.getText().toString();
+        String password = mPassword.getText().toString();
+
+        username = username.trim();
+        password = password.trim();
+
+        if (username.isEmpty() || password.isEmpty())
+        {
+            SignupDialogFragment dialog = new SignupDialogFragment();
+            dialog.show(getFragmentManager(), "error_dialog");
+        }
+        else
+        {
+           // Login!
+            mProgressBar.setVisibility(View.VISIBLE);
+            ParseUser.logInInBackground(username, password, new LogInCallback()
+            {
+                @Override
+                public void done(ParseUser user, ParseException e)
+                {
+                    mProgressBar.setVisibility(View.INVISIBLE);
+                    if( e == null)
+                    {
+                        // success login
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    } else {
+                        AlertDialogFragment dialog = new AlertDialogFragment();
+                        dialog.setMessage(e.getMessage());
+                        dialog.show(getFragmentManager(), "error_dialog");
+                    }
+                }
+            });
+        }
     }
 }
