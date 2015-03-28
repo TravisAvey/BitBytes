@@ -6,4 +6,7 @@
         android:id="@+id/action_logout"
         android:title="@string/menu_logout"
         />
+    <item
+        android:id="@+id/action_edit_friends"
+        android:title="@string/edit_friends_menu" />
 </menu>

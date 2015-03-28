@@ -26,4 +26,8 @@
     <string name="success_title">Success!</string>
     <string name="success_message">Welcome to Bit Bytes!</string>
     <string name="menu_logout">Logout</string>
+    <string name="empty_inbox_label">No new messages!</string>
+    <string name="empty_friends_label">Add friends to begin!</string>
+    <string name="edit_friends_menu">Edit Friends</string>
+    <string name="title_activity_edit_friends">EditFriendsActivity</string>
 </resources>

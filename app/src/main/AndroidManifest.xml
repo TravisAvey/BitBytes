@@ -29,8 +29,17 @@
         <activity
             android:name=".ui.SignUpActivity"
             android:label="@string/title_activity_sign_up"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".ui.LoginActivity">
+            android:parentActivityName=".ui.LoginActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Social.EditFriendsActivity"
+            android:label="@string/title_activity_edit_friends"
+            android:parentActivityName=".ui.MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cypherbytes.bitbytes.ui.MainActivity" />
         </activity>
     </application>
 
