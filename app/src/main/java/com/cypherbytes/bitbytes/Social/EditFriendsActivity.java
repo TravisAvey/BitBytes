@@ -126,13 +126,6 @@ public class EditFriendsActivity extends ListActivity
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_edit_friends, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -160,24 +153,26 @@ public class EditFriendsActivity extends ListActivity
         {
             // add friend
             mFriendsRelation.add(mUsers.get(position));
-            mCurrentUser.saveInBackground(new SaveCallback()
-            {
-                @Override
-                public void done(ParseException e)
-                {
-                    if (e != null)
-                    {
-                        // error!
-                        Log.e("onItemListClick", "at line 169", e);
-                        AlertDialogFragment dialog = new AlertDialogFragment();
-                        dialog.setMessage(e.getMessage());
-                        dialog.show(getFragmentManager(), "error_dialog");
-                    }
-                }
-            });
+
         } else {
             // remove friend
+            mFriendsRelation.remove(mUsers.get(position));
         }
+        mCurrentUser.saveInBackground(new SaveCallback()
+        {
+            @Override
+            public void done(ParseException e)
+            {
+                if (e != null)
+                {
+                    // error!
+                    Log.e("onItemListClick", "at line 169", e);
+                    AlertDialogFragment dialog = new AlertDialogFragment();
+                    dialog.setMessage(e.getMessage());
+                    dialog.show(getFragmentManager(), "error_dialog");
+                }
+            }
+        });
 
     }
 }

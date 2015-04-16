@@ -3,10 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
     <item
-        android:id="@+id/action_logout"
-        android:title="@string/menu_logout"
-        />
+        android:id="@+id/action_camera"
+        android:title="@string/menu_camera"
+        android:icon="@mipmap/ic_action_camera"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/action_edit_friends"
         android:title="@string/edit_friends_menu" />
+    <item
+        android:id="@+id/action_logout"
+        android:title="@string/menu_logout"
+        />
 </menu>

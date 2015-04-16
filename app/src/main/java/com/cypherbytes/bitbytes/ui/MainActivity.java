@@ -1,5 +1,6 @@
 package com.cypherbytes.bitbytes.ui;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cypherbytes.bitbytes.DialogFragments.CameraDialog;
 import com.cypherbytes.bitbytes.Fragments.SectionPagerAdapter;
 import com.cypherbytes.bitbytes.R;
 import com.cypherbytes.bitbytes.Social.EditFriendsActivity;
@@ -112,14 +114,21 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if(id == R.id.action_logout)
+
+        switch(id)
         {
-            ParseUser.logOut();
-            navigateToLogin();
-        } else if (id == R.id.action_edit_friends)
-        {
-            Intent intent = new Intent(this, EditFriendsActivity.class);
-            startActivity(intent);
+            case R.id.action_logout:
+                ParseUser.logOut();
+                navigateToLogin();
+                break;
+            case R.id.action_edit_friends:
+                Intent intent = new Intent(this, EditFriendsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.action_camera:
+                CameraDialog camera = new CameraDialog();
+                camera.show(getFragmentManager(), "Camera");
+                break;
         }
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings)
