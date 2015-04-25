@@ -33,10 +33,14 @@
     <string name="menu_camera">Camera</string>
     <string name="error_external_storage">There was a problem accessing your device\'s external storage.</string>
     <string name="general_error_toast">Sorry there was an error</string>
+    <string name="video_file_size_warn">The selected video must be less than 10 MB</string>
+    <string name="video_file_size">File must be 10 MB or less</string>
     <string-array name="camera_choices">
         <item>Take Picture</item>
         <item>Take Video</item>
         <item>Choose Picture</item>
         <item>Choose Video</item>
     </string-array>
+    <string name="title_activity_recipients">Choose Recipients</string>
+    <string name="empty_list_recipent_message">Find some friends!</string>
 </resources>
